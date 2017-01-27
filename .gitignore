@@ -3,3 +3,4 @@ node_modules/
 logs
 .envs/
 test_logs/
+npm-debug.log
