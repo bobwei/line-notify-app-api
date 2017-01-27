@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "pretest": "MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 mongodb-runner start",
+    "test": "jest",
+    "posttest": "mongodb-runner stop"
   },
   "author": "bob61016@gmail.com",
   "license": "MIT",
@@ -23,6 +26,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.9.0",
-    "jest": "^18.1.0"
+    "jest": "^18.1.0",
+    "mongodb-runner": "^3.4.0"
   }
 }
