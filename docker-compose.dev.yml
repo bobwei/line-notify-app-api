@@ -7,6 +7,6 @@ services:
       - 1337:1337
     env_file: .env
   mongo:
-    image: mongo:3.4.0
+    image: mongo:3.2.6
     ports:
       - 27017:27017
