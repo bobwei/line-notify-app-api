@@ -2,9 +2,14 @@ import ParseServer from 'parse-server/lib/ParseServer';
 import dotenv from 'dotenv';
 
 import parseEnvToConfig from '../utils/parseEnvToConfig';
+import { server } from '../server';
 
-jest.useFakeTimers();
 dotenv.config();
+jest.useFakeTimers();
+
+afterAll(() => {
+  server.close();
+});
 
 it('can create a parse-server instance', () => {
   const promises = [];

@@ -1,10 +1,11 @@
-/* eslint-disable global-require */
 import express from 'express';
 import { ParseServer } from 'parse-server';
 import ParseDashboard from 'parse-dashboard';
+import dotenv from 'dotenv';
 
 import parseEnvToConfig from './utils/parseEnvToConfig';
 
+dotenv.config();
 const {
   PARSE_DASHBOARD_ALLOW_INSECURE_HTTP = 'false',
   PARSE_DASHBOARD_USERNAME,

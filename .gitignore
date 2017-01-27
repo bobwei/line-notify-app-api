@@ -2,3 +2,4 @@ node_modules/
 .env
 logs
 .envs/
+test_logs/
