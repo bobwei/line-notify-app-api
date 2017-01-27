@@ -1,5 +1,5 @@
 import express from 'express';
-import { ParseServer } from 'parse-server';
+import ParseServer from 'parse-server';
 import ParseDashboard from 'parse-dashboard';
 import dotenv from 'dotenv';
 
@@ -20,7 +20,7 @@ export const app = express();
 /* parse-server */
 export const parseServerConfig = parseEnvToConfig(process.env);
 export const parseServerAPI = new ParseServer(parseServerConfig);
-app.use(parseServerConfig.mountPath, parseServerAPI);
+app.use(parseServerConfig.mountPath, parseServerAPI.app);
 
 /* parse-dashboard */
 export const parseDashboardConfig = {
