@@ -1,10 +1,9 @@
 import ParseServer from 'parse-server/lib/ParseServer';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 
 import parseEnvToConfig from '../utils/parseEnvToConfig';
 import { server } from '../server';
 
-dotenv.config();
 jest.useFakeTimers();
 
 afterAll(() => {
