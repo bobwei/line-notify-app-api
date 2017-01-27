@@ -1,6 +1,6 @@
 import definitions from 'parse-server/lib/cli/definitions/parse-server';
 
-export const parseEnvToConfig = env => (
+export default env => (
   Object
     .keys(definitions)
     .reduce((config, key) => {

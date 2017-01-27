@@ -3,7 +3,7 @@ import express from 'express';
 import { ParseServer } from 'parse-server';
 import ParseDashboard from 'parse-dashboard';
 
-import { parseEnvToConfig } from './utils';
+import parseEnvToConfig from './utils/parseEnvToConfig';
 
 const {
   PARSE_DASHBOARD_ALLOW_INSECURE_HTTP = 'false',
@@ -14,7 +14,7 @@ const {
   NODE_ENV,
 } = process.env;
 
-const app = express();
+export const app = express();
 
 /* parse-server */
 const parseServerConfig = parseEnvToConfig(process.env);
@@ -37,6 +37,6 @@ const parseDashboard = new ParseDashboard({
 }, PARSE_DASHBOARD_ALLOW_INSECURE_HTTP === 'true');
 app.use(parseDashboardConfig.mountPath, parseDashboard);
 
-app.listen(parseServerConfig.port, () => {
+export const server = app.listen(parseServerConfig.port, () => {
   console.log(`Server running on port ${parseServerConfig.port}.`);
 });
