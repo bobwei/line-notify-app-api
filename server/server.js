@@ -18,18 +18,18 @@ const {
 export const app = express();
 
 /* parse-server */
-const parseServerConfig = parseEnvToConfig(process.env);
-const api = new ParseServer(parseServerConfig);
-app.use(parseServerConfig.mountPath, api);
+export const parseServerConfig = parseEnvToConfig(process.env);
+export const parseServerAPI = new ParseServer(parseServerConfig);
+app.use(parseServerConfig.mountPath, parseServerAPI);
 
 /* parse-dashboard */
-const parseDashboardConfig = {
+export const parseDashboardConfig = {
   ...parseServerConfig,
   mountPath: PARSE_DASHBOARD_MOUNT_PATH || '/parse-dashboard',
   appName: PARSE_DASHBOARD_APP_NAME || parseServerConfig.appId,
   production: NODE_ENV === 'production',
 };
-const parseDashboard = new ParseDashboard({
+export const parseDashboard = new ParseDashboard({
   apps: [parseDashboardConfig],
   users: [{
     user: PARSE_DASHBOARD_USERNAME,
