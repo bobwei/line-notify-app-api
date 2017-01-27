@@ -6,7 +6,7 @@
     "start": "node server/index.js",
     "pretest": "MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 mongodb-runner start",
     "test": "jest",
-    "posttest": "mongodb-runner stop"
+    "posttest": "MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 mongodb-runner stop"
   },
   "author": "bob61016@gmail.com",
   "license": "MIT",
