@@ -1,24 +1,30 @@
-import ParseServer from 'parse-server/lib/ParseServer';
 import 'dotenv/config';
+import axios from 'axios';
 
-import parseEnvToConfig from '../utils/parseEnvToConfig';
 import { server } from '../server';
 
 jest.useFakeTimers();
 
+const {
+  PARSE_SERVER_APPLICATION_ID,
+  PARSE_SERVER_JAVASCRIPT_KEY,
+  PARSE_SERVER_URL,
+} = process.env;
+
 afterAll(() => {
+  console.log('all tests done');
   server.close();
 });
 
-it('can create a parse-server instance', () => {
-  const promises = [];
-  const parseServerConfig = {
-    ...parseEnvToConfig(process.env),
-    __indexBuildCompletionCallbackForTests(dbInitPromise) {
-      promises.push(dbInitPromise);
-    },
-  };
-  // eslint-disable-next-line no-unused-vars
-  const parseServer = new ParseServer(parseServerConfig);
-  return Promise.all(promises);
-});
+it('can start server', () => (
+  axios
+    .get(`${PARSE_SERVER_URL}/health`, {
+      headers: {
+        'X-Parse-Application-Id': PARSE_SERVER_APPLICATION_ID,
+        'X-Parse-Javascript-Key': PARSE_SERVER_JAVASCRIPT_KEY,
+      },
+    })
+    .then((res) => {
+      expect(res.status).toBe(200);
+    })
+));
