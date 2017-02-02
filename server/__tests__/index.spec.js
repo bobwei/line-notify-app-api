@@ -1,7 +1,6 @@
+/* eslint-disable global-require */
 import 'dotenv/config';
 import axios from 'axios';
-
-import { server } from '../server';
 
 jest.useFakeTimers();
 
@@ -11,9 +10,17 @@ const {
   PARSE_SERVER_URL,
 } = process.env;
 
+beforeAll(() => {
+  const { server } = require('../server');
+  server.setTimeout(3000);
+});
+
 afterAll(() => {
-  console.log('all tests done');
-  server.close();
+  console.log('all tests done, closing server...');
+  const { server } = require('../server');
+  server.close(() => {
+    console.log('server closed.');
+  });
 });
 
 it('can start server', () => (
