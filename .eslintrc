@@ -23,5 +23,12 @@
     "no-trailing-spaces": [1, { "skipBlankLines": true }],
     "no-unreachable": 1,
     "no-alert": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {
+        "extensions": ["*", ".js", ".jsx"]
+      }
+    }
   }
 }

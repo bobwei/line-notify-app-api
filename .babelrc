@@ -1,6 +1,11 @@
 {
   "presets": ["latest"],
   "plugins": [
-    "transform-object-rest-spread"
+    "transform-object-rest-spread",
+    ["module-resolver", {
+      "alias": {
+        "server": "./server"
+      }
+    }]
   ]
 }

@@ -11,13 +11,13 @@ const {
 } = process.env;
 
 beforeAll(() => {
-  const { server } = require('../server');
+  const { server } = require('server/server');
   server.setTimeout(3000);
 });
 
 afterAll(() => {
   console.log('all tests done, closing server...');
-  const { server } = require('../server');
+  const { server } = require('server/server');
   server.close(() => {
     console.log('server closed.');
   });
