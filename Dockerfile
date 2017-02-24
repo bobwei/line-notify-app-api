@@ -1,13 +1,14 @@
-FROM node:6.2.1
+FROM node:7.6.0
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+RUN npm install -g yarn
+
 ADD package.json .
-RUN npm install
+ADD yarn.lock .
+RUN yarn
 
 ADD . .
-
-EXPOSE 1337
 
 CMD [ "npm", "start" ]
