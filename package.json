@@ -6,7 +6,8 @@
     "start": "node server/index.js",
     "pretest": "MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 mongodb-runner start --port 27018",
     "test": "jest",
-    "posttest": "MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 mongodb-runner stop"
+    "posttest": "MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 mongodb-runner stop",
+    "validate:schema": "babel-node server/modules/schemas/validate"
   },
   "author": "bob61016@gmail.com",
   "license": "MIT",
@@ -16,9 +17,11 @@
     "dotenv": "^4.0.0",
     "express": "^4.14.1",
     "parse-dashboard": "^1.0.25",
-    "parse-server": "^2.3.5"
+    "parse-server": "^2.3.5",
+    "ramda": "^0.23.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.23.0",
     "babel-eslint": "^7.1.1",
     "babel-plugin-module-resolver": "^2.4.0",
     "babel-plugin-transform-object-rest-spread": "^6.22.0",
