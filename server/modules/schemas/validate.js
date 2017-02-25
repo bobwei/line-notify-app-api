@@ -33,7 +33,8 @@ const validate = () =>
       });
       return Promise.all(promises);
     })
-    .then(() => console.log(`validation over ${models.length} models complete successfully`));
+    .then(() => console.log(`validation over ${models.length} models complete successfully`))
+    .catch(console.log);
 
 if (require.main === module) {
   validate();
