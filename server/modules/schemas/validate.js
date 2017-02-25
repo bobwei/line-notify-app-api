@@ -26,10 +26,7 @@ const validate = () =>
             ...model,
             fields: R.omit(R.keys(schema.fields))(model.fields),
           }))
-          .then(() => console.log(`Schema ${className} validate success`))
-          .catch(({ config: { url }, response: { data } }) => {
-            console.log(JSON.stringify({ url, data }));
-          });
+          .then(() => console.log(`Schema ${className} validate success`));
       });
       return Promise.all(promises);
     })
