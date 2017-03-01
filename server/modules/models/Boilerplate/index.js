@@ -13,6 +13,10 @@ export default {
     number: {
       type: 'Number',
     },
+    pointer: {
+      type: 'Pointer',
+      targetClass: 'User',
+    },
   },
   classLevelPermissions: {
     find: {
