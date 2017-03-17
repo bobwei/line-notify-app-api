@@ -17,6 +17,10 @@ export default {
       type: 'Pointer',
       targetClass: 'User',
     },
+    relation: {
+      type: 'Relation',
+      targetClass: 'User',
+    },
   },
   classLevelPermissions: {
     find: {
