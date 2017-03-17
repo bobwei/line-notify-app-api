@@ -24,7 +24,7 @@ const validate = () =>
           })
           .then(() => ParseServerAPI.request().put(`/schemas/${className}`, {
             ...model,
-            fields: R.omit(R.keys(schema.fields))(model.fields),
+            fields: R.compose(R.omit, R.keys, R.propOr({}, 'fields'))(schema)(model.fields),
           }))
           .then(() => console.log(`Schema ${className} validate success`));
       });
