@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import ParseServer from 'parse-server';
 import ParseDashboard from 'parse-dashboard';
@@ -17,7 +18,10 @@ export const app = express();
 
 /* parse-server */
 export const parseServerConfig = parseEnvToConfig(process.env);
-export const parseServerAPI = new ParseServer(parseServerConfig);
+export const parseServerAPI = new ParseServer({
+  ...parseServerConfig,
+  cloud: path.join(__dirname, 'modules/cloudCode/index.js'),
+});
 app.use(parseServerConfig.mountPath, parseServerAPI.app);
 
 /* parse-dashboard */
