@@ -2,7 +2,7 @@ import R from 'ramda';
 import 'dotenv/config';
 
 import ParseServerAPI from 'modules/apiClients/ParseServerAPI';
-import defaultSchema from 'modules/models/Boilerplate/default';
+import defaultSchema from 'modules/models/Boilerplate/schemas/default';
 import models from 'modules/models';
 
 const validate = () =>
