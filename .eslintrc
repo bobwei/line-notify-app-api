@@ -2,27 +2,17 @@
   "parser": "babel-eslint",
   "plugins": [
   ],
-  "extends": "airbnb",
-  "ecmaFeatures": {
-    "modules": true
-  },
+  "extends": [
+    "airbnb",
+    "prettier"
+  ],
   "env": {
     "es6": true,
     "node": true,
     "jest": true
   },
   "rules": {
-    "comma-dangle": 1,
-    "quotes": [ 1, "single" ],
-    "no-undef": 1,
-    "global-strict": 0,
-    "no-extra-semi": 1,
-    "no-underscore-dangle": 0,
-    "no-console": 0,
-    "no-unused-vars": 1,
-    "no-trailing-spaces": [1, { "skipBlankLines": true }],
-    "no-unreachable": 1,
-    "no-alert": 0
+    "no-console": 0
   },
   "settings": {
     "import/resolver": {
