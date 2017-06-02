@@ -1,11 +1,11 @@
 {
-  "presets": [
-    "latest"
-  ],
+  "presets": ["latest"],
   "plugins": [
+    "transform-object-rest-spread",
     ["module-resolver", {
-      "root": ["./server"]
-    }],
-    "transform-object-rest-spread"
+      "alias": {
+        "modules": "./server/modules"
+      }
+    }]
   ]
 }
