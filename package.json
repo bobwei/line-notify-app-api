@@ -4,13 +4,12 @@
   "description": "",
   "scripts": {
     "start": "node server/index.js",
-    "dev": "nodemon server/index.js",
-    "pretest": "MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 mongodb-runner start --port 27018",
-    "test": "jest",
     "precommit": "lint-staged --verbose",
     "format": "prettier --single-quote --trailing-comma all '{server,src,__{tests,mocks}__}/**/*.{js,jsx}' --write",
     "lint-staged": "lint-staged --verbose",
-    "posttest": "MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 mongodb-runner stop",
+    "dev": "nodemon server/index.js",
+    "test": "jest --onlyChanged --watch",
+    "test:all": "jest",
     "validate:schema": "babel-node server/modules/schemas/validate"
   },
   "author": "bob61016@gmail.com",
@@ -44,6 +43,14 @@
     "mongodb-runner": "^3.4.0",
     "nodemon": "^1.11.0",
     "prettier": "^1.3.0"
+  },
+  "jest": {
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/env-setup.js",
+      "<rootDir>/__tests__/index.spec.js",
+      "<rootDir>/node_modules/"
+    ]
   },
   "lint-staged": {
     "*.{js,jsx}": [
