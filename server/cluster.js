@@ -18,7 +18,9 @@ if (cluster.isMaster) {
 
   cluster.on('exit', worker => {
     console.log('pid', worker.process.pid, 'exit');
-    console.log(`Starting with new worker in ${RESTART_WORKER_DELAY} seconds...`);
+    console.log(
+      `Starting with new worker in ${RESTART_WORKER_DELAY} seconds...`,
+    );
     setTimeout(() => cluster.fork(), RESTART_WORKER_DELAY);
   });
 } else {
