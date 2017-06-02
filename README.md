@@ -15,7 +15,7 @@ This is a parse-server project template with batteries included to speed up proj
 ```
 mkdir .envs
 cp .example.env .envs/.dev.env
-ln -s .env .envs/.dev.env
+ln -s .envs/.dev.env .env
 ```
 
 ### Run Docker
