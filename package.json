@@ -8,7 +8,7 @@
     "pretest": "MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 mongodb-runner start --port 27018",
     "test": "jest",
     "precommit": "lint-staged --verbose",
-    "format": "prettier --single-quote --trailing-comma all '{server,src,__{tests,mocks}__}/**/*.js' --write",
+    "format": "prettier --single-quote --trailing-comma all '{server,src,__{tests,mocks}__}/**/*.{js,jsx}' --write",
     "lint-staged": "lint-staged --verbose",
     "posttest": "MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 mongodb-runner stop",
     "validate:schema": "babel-node server/modules/schemas/validate"

@@ -6,31 +6,38 @@ import defaultSchema from 'modules/models/Boilerplate/schemas/default';
 import models from 'modules/models';
 
 const validate = () =>
-  Promise
-    .resolve()
+  Promise.resolve()
     .then(() => ParseServerAPI.request().get('/schemas'))
     .then(R.path(['data', 'results']))
-    .then((schemas) => {
-      const promises = models.map((model) => {
+    .then(schemas => {
+      const promises = models.map(model => {
         const { className } = model;
         const schema = R.find(R.propEq('className', className))(schemas);
-        return Promise
-          .resolve()
+        return Promise.resolve()
           .then(() => {
             if (!schema) {
-              return ParseServerAPI.request().post('/schemas', defaultSchema(className));
+              return ParseServerAPI.request().post(
+                '/schemas',
+                defaultSchema(className),
+              );
             }
             return Promise.resolve();
           })
-          .then(() => ParseServerAPI.request().put(`/schemas/${className}`, {
-            ...model,
-            fields: R.compose(R.omit, R.keys, R.propOr({}, 'fields'))(schema)(model.fields),
-          }))
+          .then(() =>
+            ParseServerAPI.request().put(`/schemas/${className}`, {
+              ...model,
+              fields: R.compose(R.omit, R.keys, R.propOr({}, 'fields'))(schema)(
+                model.fields,
+              ),
+            }),
+          )
           .then(() => console.log(`Schema ${className} validate success`));
       });
       return Promise.all(promises);
     })
-    .then(() => console.log(`validation over ${models.length} models complete successfully`))
+    .then(() =>
+      console.log(`validation over ${models.length} models complete successfully`),
+    )
     .catch(console.log);
 
 if (require.main === module) {
