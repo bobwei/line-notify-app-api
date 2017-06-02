@@ -35,3 +35,12 @@ yarn
 ```
 yarn start
 ```
+
+## Parse Server Links
+
+- [parse-server](https://github.com/ParsePlatform/parse-server)
+- [parse-dashboard](https://github.com/parse-community/parse-dashboard)
+- [Parse Server Guide](http://docs.parseplatform.org/parse-server/guide)
+- [Parse Server REST Guide](http://docs.parseplatform.org/rest/guide/)
+- [Parse Server Javascript Guide](http://docs.parseplatform.org/js/guide/)
+- [Parse Server Cloud Code Guide](http://docs.parseplatform.org/cloudcode/guide/)
