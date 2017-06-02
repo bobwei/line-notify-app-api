@@ -5,19 +5,32 @@ This is a parse-server project template with batteries included to speed up proj
 
 ## Getting Started
 
-#### Prepare your .env file
+- Config ENV
+- Run Docker
+- Install Node Dependencies
+- Start Server
+
+### Config ENV
 
 ```
 mkdir .envs
-mv .example.env .envs/dev.env
+cp .example.env .envs/.dev.env
+ln -s .env .envs/.dev.env
 ```
 
+### Run Docker
 
-## Development Flow
+```
+docker-compose -f docker-compose.dev.dbs.yml up -d
+```
+
+### Install Node Dependencies
 
 ```
 yarn
 ```
+
+### Start Server
 
 ```
 yarn start
