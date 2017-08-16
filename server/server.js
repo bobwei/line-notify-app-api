@@ -4,6 +4,7 @@ import ParseServer from 'parse-server';
 import ParseDashboard from 'parse-dashboard';
 
 import createCloudCode from 'modules/cloudCode';
+import createAPI from 'modules/line/notify';
 
 import parseEnvToConfig from './utils/parseEnvToConfig';
 
@@ -18,6 +19,9 @@ const createServer = (env = process.env) => {
     PORT,
     PARSE_SERVER_MOUNT_PATH,
     PARSE_SERVER_URL_FOR_SDK = `http://localhost:${PORT}${PARSE_SERVER_MOUNT_PATH}`,
+    BASE_SERVER_URL,
+    LINE_API_CLIENT_ID,
+    LINE_API_CLIENT_SECRET,
   } = env;
 
   const app = express();
@@ -60,6 +64,15 @@ const createServer = (env = process.env) => {
     PARSE_SERVER_MASTER_KEY
   */
   Parse.serverURL = PARSE_SERVER_URL_FOR_SDK;
+
+  app.use(
+    '/api/line/notify/v1',
+    createAPI({
+      BASE_SERVER_URL,
+      LINE_API_CLIENT_ID,
+      LINE_API_CLIENT_SECRET,
+    }),
+  );
 
   return new Promise(resolve => {
     const server = app.listen(parseServerConfig.port, () => {
