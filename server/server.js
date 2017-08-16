@@ -19,7 +19,7 @@ const createServer = (env = process.env) => {
     PORT,
     PARSE_SERVER_MOUNT_PATH,
     PARSE_SERVER_URL_FOR_SDK = `http://localhost:${PORT}${PARSE_SERVER_MOUNT_PATH}`,
-    BASE_SERVER_URL,
+    BASE_API_URL,
     LINE_API_CLIENT_ID,
     LINE_API_CLIENT_SECRET,
   } = env;
@@ -68,9 +68,10 @@ const createServer = (env = process.env) => {
   app.use(
     '/api/line/notify/v1',
     createAPI({
-      BASE_SERVER_URL,
+      BASE_API_URL,
       LINE_API_CLIENT_ID,
       LINE_API_CLIENT_SECRET,
+      Parse,
     }),
   );
 
